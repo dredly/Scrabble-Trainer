@@ -5,7 +5,24 @@ body {
 }
 
 #tile-rack {
-    height: 5rem;
+    width: 90vw;
     aspect-ratio: 7/1;
+    box-sizing: border-box;
+    border: 1px solid blue;
     background-color: green;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.tile {
+    box-sizing: border-box;
+    border: 1px solid blue;
+    background: #ccae4b;
+    width: calc(90vw / 7);
+    aspect-ratio: 1/1;
+    text-align: center;
+    display: grid;
+    place-content: center;
+    font-size: 6vw;
+    padding-top: 0.3em;
 }
