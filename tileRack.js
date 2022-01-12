@@ -2,14 +2,8 @@ const tileRack = {
     display: document.querySelector('#tile-rack'),
     letters: [],
     fill: function (numToFill) {
-        // Populates the letters array with the specified number of letter objects
-        // numToFill should be between 1 and 7
-        for (let i = 0; i < numToFill; i++) {
-            const randIndex = Math.floor(Math.random() * letterBag.length);
-            const randLetter = letterBag[randIndex];
-            letterBag.splice(randIndex, 1);
-            this.letters.push(randLetter);
-        }
+        const newTiles = letterBag.splice(0, numToFill);
+        this.letters.push(newTiles);
     },
     // TODO: Change from showing blank tiles to a separate element for space in the rack
     initialRender: function () {

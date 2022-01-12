@@ -8,6 +8,6 @@ This project will implement some of the functionality from my existing ScrabbleJ
 
 ## Next Tasks
 
-- [x] Change tile randomisation so that the entire bag is randomised with a seed
-- [] Change tile replenishing so that tiles are taken out of the bag in order
-- [] Add option to choose between a random seed and a predetermined seed
+-[x] Change tile randomisation so that the entire bag is randomised with a seed
+-[x] Change tile replenishing so that tiles are taken out of the bag in order
+-[] Add option to choose between a random seed and a predetermined seed
