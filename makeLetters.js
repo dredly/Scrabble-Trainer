@@ -79,6 +79,7 @@ seedForm.addEventListener("submit", e => {
     shuffle(letterBag, seed);
     seedForm.remove();
     createWordForm();
+    startGameLoop();
 });
 
 
