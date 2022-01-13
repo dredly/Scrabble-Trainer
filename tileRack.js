@@ -3,7 +3,7 @@ const tileRack = {
     letters: [],
     fill: function (numToFill) {
         const newTiles = letterBag.splice(0, numToFill);
-        this.letters.push(newTiles);
+        this.letters.push(...newTiles);
     },
     // TODO: Change from showing blank tiles to a separate element for space in the rack
     initialRender: function () {

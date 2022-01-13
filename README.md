@@ -8,6 +8,7 @@ This project will implement some of the functionality from my existing ScrabbleJ
 
 ## Next Tasks
 
+
 - [x] Remove randomisation form upon submission and replace it with the word entry form
-- [] Ensure that tilerack setup works
-- [] Ensure that tilerack replenishing works
+- [x] Ensure that tilerack setup works
+- [ ] Ensure that tilerack replenishing works
