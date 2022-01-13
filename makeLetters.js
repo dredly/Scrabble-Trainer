@@ -77,6 +77,8 @@ seedForm.addEventListener("submit", e => {
     }
     console.log(`Seed is ${seed}`);
     shuffle(letterBag, seed);
+    seedForm.remove();
+    createWordForm();
 });
 
 

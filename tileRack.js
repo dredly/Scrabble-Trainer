@@ -28,7 +28,7 @@ const tileRack = {
     },
     replenish: function (usedLetters) {
         // Takes an array of letter objects that have been used, and replaces them
-        // with new ketters frin the bag
+        // with new letters from the bag
         for (lett of usedLetters) {
             const current_ind = this.letters.indexOf(lett);
             this.remove(current_ind);
