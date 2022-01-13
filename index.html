@@ -12,8 +12,16 @@
 <body>
     <div id="game-area">
         <div id="tile-rack"></div>
+        <form id="seed-form" action="">
+            <label for="use-seed">Use Random Seed</label>
+            <input type="checkbox" checked id="use-seed" name="isRandom">
+            <fieldset id="seed-selection" disabled>
+                <label for="choose-seed"></label>Enter a custom seed</label>
+                <input type="text" name="chosenSeed">
+            </fieldset>
+            <button type="submit">Start</button>
+        </form>
     </div>
-
     <script src="makeLetters.js"></script>
     <script src="tileRack.js"></script>
 </body>
