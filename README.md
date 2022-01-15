@@ -10,4 +10,4 @@ This project will implement some of the functionality from my existing ScrabbleJ
 
 - [x] Implement a check that the user has all the letters
 - [x] Check that attempted word is a real word
-- [ ] If it is a real word, make sure tiles are replenished properly
+- [x] If it is a real word, make sure tiles are replenished properly

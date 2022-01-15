@@ -13,9 +13,9 @@ function hasLetters(attemptedWord, availableLetters) {
     return true;
 }
 
-async function makeWordDict(dictFileName) {
-    const dictFile = await fetch(dictFileName);
-    return dictFile.split('\n');
+function getLetterObj(character) {
+    // Takes a single character, and returns the letter object associated with it
+    return letterList.filter(letter => letter.character === character)[0];
 }
 
 function createWordForm() {
@@ -35,6 +35,7 @@ function handleWordSubmission(evt, wordForm) {
     } else {
         if (scrabbleDict.has(wordAttempt)) {
             console.log("real word");
+            tileRack.replenish(wordAttempt.split('').map(chr => getLetterObj(chr)));
         } else {
             console.log("not a real word");
         }
