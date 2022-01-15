@@ -9,5 +9,5 @@ This project will implement some of the functionality from my existing ScrabbleJ
 ## Next Tasks
 
 - [x] Implement a check that the user has all the letters
-- [ ] If passes first check, send a request to scrabble dictionary website
-- [ ] Parse the returned HTML to see if word was valid
+- [x] Check that attempted word is a real word
+- [ ] If it is a real word, make sure tiles are replenished properly

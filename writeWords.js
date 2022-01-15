@@ -13,6 +13,11 @@ function hasLetters(attemptedWord, availableLetters) {
     return true;
 }
 
+async function makeWordDict(dictFileName) {
+    const dictFile = await fetch(dictFileName);
+    return dictFile.split('\n');
+}
+
 function createWordForm() {
     const wordInputForm = document.createElement('form');
     wordInputForm.id = "word-form";
@@ -22,12 +27,16 @@ function createWordForm() {
 
 function handleWordSubmission(evt, wordForm) {
     evt.preventDefault();
-    const wordAttempt = wordForm.elements.word.value.toUpperCase().split('');
+    const wordAttempt = wordForm.elements.word.value.toUpperCase();
     wordForm.elements.word.value = '';
     const currentLetters = tileRack.letters.map(tile => tile.character);
-    if (!hasLetters(wordAttempt, currentLetters)) {
+    if (!hasLetters(wordAttempt.split(''), currentLetters)) {
         console.log('You do not have the letters to write that word');
     } else {
-        console.log('Nice word bro');
+        if (scrabbleDict.has(wordAttempt)) {
+            console.log("real word");
+        } else {
+            console.log("not a real word");
+        }
     }
 }
