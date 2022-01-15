@@ -79,6 +79,8 @@ seedForm.addEventListener("submit", e => {
     shuffle(letterBag, seed);
     seedForm.remove();
     createWordForm();
+    const wordForm = document.querySelector("#word-form");
+    wordForm.addEventListener('submit', e => handleWordSubmission(e, wordForm));
     startGameLoop();
 });
 

@@ -8,7 +8,6 @@ This project will implement some of the functionality from my existing ScrabbleJ
 
 ## Next Tasks
 
-
-- [x] Remove randomisation form upon submission and replace it with the word entry form
-- [x] Ensure that tilerack setup works
-- [x] Ensure that tilerack replenishing works
+- [x] Implement a check that the user has all the letters
+- [ ] If passes first check, send a request to scrabble dictionary website
+- [ ] Parse the returned HTML to see if word was valid
