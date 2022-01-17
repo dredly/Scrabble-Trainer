@@ -69,8 +69,6 @@ randomSeedCheck.addEventListener("click", () => {
     seedSelection.toggleAttribute("disabled");
 })
 
-let userScore = 0;
-
 seedForm.addEventListener("submit", e => {
     e.preventDefault();
     let seed = Math.random();
@@ -78,9 +76,12 @@ seedForm.addEventListener("submit", e => {
         seed = seedForm.elements.chosenSeed.value;
     }
     console.log(`Seed is ${seed}`);
+    seedDisplay.innerText = seed;
     shuffle(letterBag, seed);
     seedForm.remove();
     createWordForm();
+    currentRound += 1;
+    roundDisplay.innerText = currentRound;
     const wordForm = document.querySelector("#word-form");
     wordForm.addEventListener('submit', e => handleWordSubmission(e, wordForm));
     setupTileRack();

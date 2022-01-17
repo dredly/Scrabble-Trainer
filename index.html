@@ -11,6 +11,27 @@
 
 <body>
     <div id="game-area">
+        <div id="game-messages"></div>
+        <div id="game-info">
+            <table>
+                <tr>
+                    <th>
+                        Round
+                    </th>
+                    <th>
+                        Score
+                    </th>
+                    <th>
+                        Random Seed
+                    </th>
+                </tr>
+                <tr>
+                    <td id="roundDisplay"></td>
+                    <td id="scoreDisplay">0</td>
+                    <td id="seedDisplay"></td>
+                </tr>
+            </table>
+        </div>
         <div id="tile-rack"></div>
         <form id="seed-form">
             <label for="use-seed">Use Random Seed</label>
@@ -22,6 +43,7 @@
             <button type="submit">Start</button>
         </form>
     </div>
+    <script src="app.js"></script>
     <script src="dictSet.js"></script>
     <script src="makeLetters.js"></script>
     <script src="tileRack.js"></script>

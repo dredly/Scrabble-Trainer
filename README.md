@@ -10,5 +10,5 @@ This project will implement some of the functionality from my existing ScrabbleJ
 
 - [x] Keep track of user score
 - [x] Implement bingo
-- [ ] Actually show the messages on the page instead of just the console
+- [x] Actually show the messages on the page instead of just the console
 - [ ] Refactor code into a more logical structure, i.e. with gameloop

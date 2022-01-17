@@ -34,9 +34,11 @@ function handleWordSubmission(evt, wordForm) {
     const currentLetters = tileRack.letters.map(tile => tile.character);
     if (!hasLetters(wordAttempt.split(''), currentLetters)) {
         console.log('You do not have the letters to write that word');
+        gameMessages.innerText = "You do not have the required letters";
     } else {
         if (scrabbleDict.has(wordAttempt)) {
-            console.log("real word");
+            console.log("Valid word");
+            gameMessages.innerText = "Valid Word";
             const successfulWordArr = wordAttempt.split('').map(chr => getLetterObj(chr));
             let points = successfulWordArr.map(lett => lett.pointsVal).reduce((a, b) => a + b);
             // Bingo Rule, i.e. Player gets a flat bonus if they use all tiles at once
@@ -44,8 +46,11 @@ function handleWordSubmission(evt, wordForm) {
             userScore += points;
             console.log(`Total score: ${userScore}. Points for this word: ${points}`);
             tileRack.replenish(successfulWordArr);
+            currentRound += 1;
+            roundDisplay.innerText = currentRound;
         } else {
             console.log("not a real word");
+            gameMessages.innerText = "That is not a valid word!";
         }
     }
 }
