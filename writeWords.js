@@ -35,7 +35,11 @@ function handleWordSubmission(evt, wordForm) {
     } else {
         if (scrabbleDict.has(wordAttempt)) {
             console.log("real word");
-            tileRack.replenish(wordAttempt.split('').map(chr => getLetterObj(chr)));
+            const successfulWordArr = wordAttempt.split('').map(chr => getLetterObj(chr));
+            const points = successfulWordArr.map(lett => lett.pointsVal).reduce((a, b) => a + b);
+            userScore += points;
+            console.log(`Total score: ${userScore}. Points for this word: ${points}`);
+            tileRack.replenish(successfulWordArr);
         } else {
             console.log("not a real word");
         }

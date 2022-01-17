@@ -69,6 +69,8 @@ randomSeedCheck.addEventListener("click", () => {
     seedSelection.toggleAttribute("disabled");
 })
 
+let userScore = 0;
+
 seedForm.addEventListener("submit", e => {
     e.preventDefault();
     let seed = Math.random();
@@ -81,7 +83,7 @@ seedForm.addEventListener("submit", e => {
     createWordForm();
     const wordForm = document.querySelector("#word-form");
     wordForm.addEventListener('submit', e => handleWordSubmission(e, wordForm));
-    startGameLoop();
+    setupTileRack();
 });
 
 

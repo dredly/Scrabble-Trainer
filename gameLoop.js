@@ -1,3 +1,0 @@
-function startGameLoop() {
-    setupTileRack();
-}

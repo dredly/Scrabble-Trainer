@@ -8,6 +8,7 @@ This project will implement some of the functionality from my existing ScrabbleJ
 
 ## Next Tasks
 
-- [x] Implement a check that the user has all the letters
-- [x] Check that attempted word is a real word
-- [x] If it is a real word, make sure tiles are replenished properly
+- [x] Keep track of user score
+- [ ] Implement bingo
+- [ ] Actually show the messages on the page instead of just the console
+- [ ] Refactor code into a more logical structure, i.e. with gameloop
