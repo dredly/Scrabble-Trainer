@@ -1,3 +1,5 @@
+const bingoBonus = 25;
+
 function hasLetters(attemptedWord, availableLetters) {
     // Takes two arrays, attemptedWord and availableLetters,
     // and checks that the attemptedWord can be written with 
@@ -36,7 +38,9 @@ function handleWordSubmission(evt, wordForm) {
         if (scrabbleDict.has(wordAttempt)) {
             console.log("real word");
             const successfulWordArr = wordAttempt.split('').map(chr => getLetterObj(chr));
-            const points = successfulWordArr.map(lett => lett.pointsVal).reduce((a, b) => a + b);
+            let points = successfulWordArr.map(lett => lett.pointsVal).reduce((a, b) => a + b);
+            // Bingo Rule, i.e. Player gets a flat bonus if they use all tiles at once
+            if (successfulWordArr.length === 7) points += 50;
             userScore += points;
             console.log(`Total score: ${userScore}. Points for this word: ${points}`);
             tileRack.replenish(successfulWordArr);
