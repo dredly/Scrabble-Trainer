@@ -8,7 +8,6 @@ This project will implement some of the functionality from my existing ScrabbleJ
 
 ## Next Tasks
 
-- [x] Keep track of user score
-- [x] Implement bingo
-- [x] Actually show the messages on the page instead of just the console
-- [ ] Refactor code into a more logical structure, i.e. with gameloop
+- [x] Refactor code into a more logical structure
+- [ ] Limit the number of rounds
+- [ ] Add time limit

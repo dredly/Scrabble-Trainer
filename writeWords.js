@@ -27,6 +27,21 @@ function createWordForm() {
     document.querySelector("#game-area").appendChild(wordInputForm);
 }
 
+function handleSuccessfulWord(wordAttempt) {
+    console.log("Valid word");
+    gameMessages.innerText = "Valid Word";
+    const successfulWordArr = wordAttempt.split('').map(chr => getLetterObj(chr));
+    let points = successfulWordArr.map(lett => lett.pointsVal).reduce((a, b) => a + b);
+    // Bingo Rule, i.e. Player gets a flat bonus if they use all tiles at once
+    if (successfulWordArr.length === 5) points += bingoBonus;
+    userScore += points;
+    scoreDisplay.innerText = userScore;
+    console.log(`Total score: ${userScore}. Points for this word: ${points}`);
+    tileRack.replenish(successfulWordArr);
+    currentRound += 1;
+    roundDisplay.innerText = currentRound;
+}
+
 function handleWordSubmission(evt, wordForm) {
     evt.preventDefault();
     const wordAttempt = wordForm.elements.word.value.toUpperCase();
@@ -37,17 +52,7 @@ function handleWordSubmission(evt, wordForm) {
         gameMessages.innerText = "You do not have the required letters";
     } else {
         if (scrabbleDict.has(wordAttempt)) {
-            console.log("Valid word");
-            gameMessages.innerText = "Valid Word";
-            const successfulWordArr = wordAttempt.split('').map(chr => getLetterObj(chr));
-            let points = successfulWordArr.map(lett => lett.pointsVal).reduce((a, b) => a + b);
-            // Bingo Rule, i.e. Player gets a flat bonus if they use all tiles at once
-            if (successfulWordArr.length === 7) points += 50;
-            userScore += points;
-            console.log(`Total score: ${userScore}. Points for this word: ${points}`);
-            tileRack.replenish(successfulWordArr);
-            currentRound += 1;
-            roundDisplay.innerText = currentRound;
+            handleSuccessfulWord(wordAttempt);
         } else {
             console.log("not a real word");
             gameMessages.innerText = "That is not a valid word!";
