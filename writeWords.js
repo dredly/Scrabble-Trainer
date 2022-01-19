@@ -39,6 +39,7 @@ function handleSuccessfulWord(wordAttempt) {
     console.log(`Total score: ${userScore}. Points for this word: ${points}`);
     tileRack.replenish(successfulWordArr);
     currentRound += 1;
+    if (currentRound > numRounds) handleGameEnd();
     roundDisplay.innerText = currentRound;
 }
 

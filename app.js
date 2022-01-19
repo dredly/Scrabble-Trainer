@@ -27,7 +27,6 @@ function random(seed) {
 
 function handleStart(evt) {
     evt.preventDefault();
-    let seed = Math.random();
     if (!seedForm.elements.isRandom.checked) {
         seed = seedForm.elements.chosenSeed.value;
     }
@@ -43,6 +42,11 @@ function handleStart(evt) {
     setupTileRack();
 }
 
+function handleGameEnd() {
+    gameArea.innerHTML = `<h1>GAME OVER. You scored ${userScore} points</h1><h2>with seed ${seed}</h2>`;
+}
+
+const gameArea = document.querySelector('#game-area');
 const seedForm = document.querySelector("#seed-form");
 const randomSeedCheck = document.querySelector("#use-seed");
 const seedSelection = document.querySelector("#seed-selection");
@@ -54,7 +58,6 @@ randomSeedCheck.addEventListener("click", () => {
 
 // Start the main "game loop" on submission of the random seed form
 seedForm.addEventListener("submit", e => handleStart(e));
-
 const gameMessages = document.querySelector('#game-messages');
 
 // Initialise game info
@@ -62,5 +65,8 @@ const roundDisplay = document.querySelector('#roundDisplay');
 const scoreDisplay = document.querySelector('#scoreDisplay');
 const seedDisplay = document.querySelector('#seedDisplay');
 
+let seed = Math.random();
 let userScore = 0;
 let currentRound = 0;
+
+const numRounds = 5;

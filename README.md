@@ -9,5 +9,5 @@ This project will implement some of the functionality from my existing ScrabbleJ
 ## Next Tasks
 
 - [x] Refactor code into a more logical structure
-- [ ] Limit the number of rounds
+- [x] Limit the number of rounds
 - [ ] Add time limit
