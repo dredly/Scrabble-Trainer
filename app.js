@@ -40,10 +40,23 @@ function handleStart(evt) {
     const wordForm = document.querySelector("#word-form");
     wordForm.addEventListener('submit', e => handleWordSubmission(e, wordForm));
     setupTileRack();
+    const timer = new easytimer.Timer();
+    timeDisplay.innerText = `${timeInMinutes}:00`;
+    timer.start({ countdown: true, startValues: { minutes: timeInMinutes } });
+    timer.addEventListener('secondsUpdated', () => {
+        timeDisplay.innerText = timer.getTimeValues().toString(['minutes', 'seconds']);
+    });
+    timer.addEventListener('targetAchieved', () => {
+        handleGameEnd(outOfTime = true);
+    })
 }
 
-function handleGameEnd() {
-    gameArea.innerHTML = `<h1>GAME OVER. You scored ${userScore} points</h1><h2>with seed ${seed}</h2>`;
+function handleGameEnd(outOfTime = false) {
+    const gameOverMessage = outOfTime ?
+        `You ran out of time!` :
+        `You completed all ${numRounds} rounds.`;
+
+    gameArea.innerHTML = `<h1>GAME OVER. ${gameOverMessage} Final score: ${userScore} points</h1><h2>with seed ${seed}</h2>`;
 }
 
 const gameArea = document.querySelector('#game-area');
@@ -61,6 +74,7 @@ seedForm.addEventListener("submit", e => handleStart(e));
 const gameMessages = document.querySelector('#game-messages');
 
 // Initialise game info
+const timeDisplay = document.querySelector('#timer');
 const roundDisplay = document.querySelector('#roundDisplay');
 const scoreDisplay = document.querySelector('#scoreDisplay');
 const seedDisplay = document.querySelector('#seedDisplay');
@@ -69,4 +83,6 @@ let seed = Math.random();
 let userScore = 0;
 let currentRound = 0;
 
+// Game configuration
+const timeInMinutes = 1;
 const numRounds = 5;

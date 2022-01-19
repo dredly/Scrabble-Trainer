@@ -10,4 +10,6 @@ This project will implement some of the functionality from my existing ScrabbleJ
 
 - [x] Refactor code into a more logical structure
 - [x] Limit the number of rounds
-- [ ] Add time limit
+- [x] Add time limit
+- [ ] Make word submission form auto focused
+- [ ] Make timer turn red when time is low
