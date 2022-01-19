@@ -22,8 +22,9 @@ function getLetterObj(character) {
 
 function createWordForm() {
     const wordInputForm = document.createElement('form');
+    wordInputForm.autocomplete = 'off';
     wordInputForm.id = "word-form";
-    wordInputForm.innerHTML = '<label for="word">Enter a word</label><input type="text" name="word" id="word"><button type="submit">Write</button>';
+    wordInputForm.innerHTML = '<label for="word">Enter a word</label><input type="text" name="word" id="word" autofocus><button type="submit">Write</button>';
     document.querySelector("#game-area").appendChild(wordInputForm);
 }
 
