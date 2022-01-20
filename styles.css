@@ -26,3 +26,8 @@ body {
     font-size: 6vw;
     padding-top: 0.3em;
 }
+
+.urgent {
+    font-weight: bold;
+    color: red;
+}

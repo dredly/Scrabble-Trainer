@@ -44,6 +44,9 @@ function handleStart(evt) {
     timeDisplay.innerText = `${timeInMinutes}:00`;
     timer.start({ countdown: true, startValues: { minutes: timeInMinutes } });
     timer.addEventListener('secondsUpdated', () => {
+        if (timer.getTimeValues().seconds === 10) {
+            timeDisplay.classList.toggle('urgent');
+        }
         timeDisplay.innerText = timer.getTimeValues().toString(['minutes', 'seconds']);
     });
     timer.addEventListener('targetAchieved', () => {
