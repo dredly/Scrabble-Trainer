@@ -61,6 +61,8 @@ function handleWordSubmission(evt, wordForm) {
             handleSuccessfulWord(wordAttempt);
         } else {
             console.log("not a real word");
+            userScore -= 5;
+            scoreDisplay.innerText = userScore;
             gameMessages.innerText = "That is not a valid word!";
         }
     }
