@@ -40,7 +40,6 @@ function handleStart(evt) {
     const wordForm = document.querySelector("#word-form");
     wordForm.addEventListener('submit', e => handleWordSubmission(e, wordForm));
     setupTileRack();
-    const timer = new easytimer.Timer();
     timeDisplay.innerText = `${timeInMinutes}:00`;
     timer.start({ countdown: true, startValues: { minutes: timeInMinutes } });
     timer.addEventListener('secondsUpdated', () => {
@@ -55,11 +54,17 @@ function handleStart(evt) {
 }
 
 function handleGameEnd(outOfTime = false) {
-    const gameOverMessage = outOfTime ?
-        `You ran out of time!` :
-        `You completed all ${numRounds} rounds.`;
-
+    let gameOverMessage = '';
+    if (outOfTime) {
+        gameOverMessage = 'You ran out of time!';
+    } else {
+        gameOverMessage = `You completed all ${numRounds} rounds.`;
+    }
     gameArea.innerHTML = `<h1>GAME OVER. ${gameOverMessage} Final score: ${userScore} points</h1><h2>with seed ${seed}</h2>`;
+    const restartButton = document.createElement('button');
+    restartButton.innerText = 'Play Again';
+    gameArea.append(restartButton);
+    restartButton.addEventListener('click', () => window.location.reload());
 }
 
 const gameArea = document.querySelector('#game-area');
@@ -87,5 +92,6 @@ let userScore = 0;
 let currentRound = 0;
 
 // Game configuration
+const timer = new easytimer.Timer();
 const timeInMinutes = 1;
 const numRounds = 5;
