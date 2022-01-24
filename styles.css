@@ -20,6 +20,10 @@ body * {
     color: green;
 }
 
+.bold {
+    font-weight: 700;
+}
+
 .button {
     border: 2px solid rgba(0, 128, 0, 0.493);
     font-size: 1.2rem;

@@ -66,10 +66,18 @@ function handleGameEnd(outOfTime = false) {
         }
     }
     gameArea.innerHTML = `<h1>GAME OVER. ${gameOverMessage} Final score: ${userScore} points</h1><h2>with seed ${seed}</h2>`;
+    const scoreTable = document.createElement('table');
+    for (let word of wordsWritten) {
+        const tableRow = document.createElement('tr');
+        tableRow.innerHTML = `<td>word <span class="bold">${word.word}</span></td><td>${word.points} points</td>`;
+        scoreTable.append(tableRow);
+    }
+    gameArea.append(scoreTable);
     const restartButton = document.createElement('button');
     restartButton.innerText = 'Play Again';
     restartButton.classList.add('button');
     gameArea.append(restartButton);
+    console.log(wordsWritten);
     restartButton.addEventListener('click', () => window.location.reload());
 }
 
@@ -97,6 +105,7 @@ const seedDisplay = document.querySelector('#seedDisplay');
 let seed = Math.random();
 let userScore = 0;
 let currentRound = 0;
+const wordsWritten = [];
 
 // Game configuration
 const timer = new easytimer.Timer();
