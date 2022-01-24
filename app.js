@@ -40,11 +40,10 @@ function handleStart(evt) {
     const wordForm = document.querySelector("#word-form");
     wordForm.addEventListener('submit', e => handleWordSubmission(e, wordForm));
     setupTileRack();
-    timeDisplay.innerText = `${timeInMinutes}:00`;
     timer.start({ countdown: true, startValues: { minutes: timeInMinutes } });
     timer.addEventListener('secondsUpdated', () => {
         if (timer.getTimeValues().seconds === 10) {
-            timeDisplay.classList.toggle('urgent');
+            timeDisplay.classList.toggle('red');
         }
         timeDisplay.innerText = timer.getTimeValues().toString(['minutes', 'seconds']);
     });
@@ -95,3 +94,5 @@ let currentRound = 0;
 const timer = new easytimer.Timer();
 const timeInMinutes = 1;
 const numRounds = 5;
+
+timeDisplay.innerText = `${timeInMinutes}:00`;

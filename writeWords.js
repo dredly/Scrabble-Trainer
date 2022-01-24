@@ -28,9 +28,19 @@ function createWordForm() {
     document.querySelector("#game-area").appendChild(wordInputForm);
 }
 
+function changeMessageColor(changeTo) {
+    if (gameMessages.classList[0] !== changeTo) {
+        gameMessages.classList.forEach(cls => {
+            gameMessages.classList.remove(cls);
+        })
+        gameMessages.classList.add(changeTo);
+    }
+}
+
 function handleSuccessfulWord(wordAttempt) {
     console.log("Valid word");
     gameMessages.innerText = "Valid Word";
+    changeMessageColor('green');
     const successfulWordArr = wordAttempt.split('').map(chr => getLetterObj(chr));
     let points = successfulWordArr.map(lett => lett.pointsVal).reduce((a, b) => a + b);
     // Bingo Rule, i.e. Player gets a flat bonus if they use all tiles at once
@@ -56,6 +66,7 @@ function handleWordSubmission(evt, wordForm) {
     if (!hasLetters(wordAttempt.split(''), currentLetters)) {
         console.log('You do not have the letters to write that word');
         gameMessages.innerText = "You do not have the required letters";
+        changeMessageColor('red');
     } else {
         if (scrabbleDict.has(wordAttempt)) {
             handleSuccessfulWord(wordAttempt);
@@ -64,6 +75,7 @@ function handleWordSubmission(evt, wordForm) {
             userScore -= 5;
             scoreDisplay.innerText = userScore;
             gameMessages.innerText = "That is not a valid word!";
+            changeMessageColor('red');
         }
     }
 }

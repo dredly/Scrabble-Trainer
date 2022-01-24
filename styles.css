@@ -4,12 +4,31 @@ body {
     place-content: center;
 }
 
+body * {
+    font-family: 'Rubik', sans-serif;
+}
+
+#timer-and-messages {
+    display: flex;
+    align-items: center;
+}
+
+#timer {
+    width: 4em;
+    font-size: 3rem;
+    margin: 0;
+}
+
+#game-messages {
+    font-size: 2em;
+}
+
 #tile-rack {
     width: 90vw;
     aspect-ratio: 7/1;
     box-sizing: border-box;
-    border: 1px solid blue;
-    background-color: green;
+    border: 2px solid rgb(22, 14, 2);
+    background-color: #cfbf89;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
 }
@@ -27,7 +46,10 @@ body {
     padding-top: 0.3em;
 }
 
-.urgent {
-    font-weight: bold;
+.red {
     color: red;
+}
+
+.green {
+    color: green;
 }
