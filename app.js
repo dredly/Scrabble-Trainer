@@ -62,6 +62,7 @@ function handleGameEnd(outOfTime = false) {
     gameArea.innerHTML = `<h1>GAME OVER. ${gameOverMessage} Final score: ${userScore} points</h1><h2>with seed ${seed}</h2>`;
     const restartButton = document.createElement('button');
     restartButton.innerText = 'Play Again';
+    restartButton.classList.add('button');
     gameArea.append(restartButton);
     restartButton.addEventListener('click', () => window.location.reload());
 }
@@ -74,6 +75,7 @@ const seedSelection = document.querySelector("#seed-selection");
 // Enables the manual seed input if the user choose to do so
 randomSeedCheck.addEventListener("click", () => {
     seedSelection.toggleAttribute("disabled");
+    seedSelection.classList.toggle("disabled");
 })
 
 // Start the main "game loop" on submission of the random seed form

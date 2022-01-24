@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrabble Trainer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="game-area">
+        <div id="timer-and-messages">
+            <h2 id="timer"></h2>
+            <div id="game-messages"></div>
+        </div>
+        <div id="game-info">
+            <table>
+                <tr>
+                    <th>
+                        Round
+                    </th>
+                    <th>
+                        Score
+                    </th>
+                    <th>
+                        Random Seed
+                    </th>
+                </tr>
+                <tr>
+                    <td id="roundDisplay"></td>
+                    <td id="scoreDisplay">0</td>
+                    <td id="seedDisplay"></td>
+                </tr>
+            </table>
+        </div>
+        <div id="tile-rack"></div>
+        <form id="seed-form" class="game-form">
+            <label for="use-seed">Use Random Seed</label>
+            <input type="checkbox" checked id="use-seed" name="isRandom">
+            <fieldset id="seed-selection" class="disabled" disabled>
+                <label for="choose-seed"></label>Enter a custom seed</label>
+                <input type="number" step=any name="chosenSeed" id="choose-seed">
+            </fieldset>
+            <button type="submit" class="button">Start</button>
+        </form>
+    </div>
+    <script src="libraries/easytimer.min.js"></script>
+    <script src="app.js"></script>
+    <script src="dictSet.js"></script>
+    <script src="makeLetters.js"></script>
+    <script src="tileRack.js"></script>
+    <script src="writeWords.js"></script>
+</body>
+
+</html>
