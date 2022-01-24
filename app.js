@@ -58,6 +58,12 @@ function handleGameEnd(outOfTime = false) {
         gameOverMessage = 'You ran out of time!';
     } else {
         gameOverMessage = `You completed all ${numRounds} rounds.`;
+        const secondsLeft = timer.getTimeValues().seconds;
+        const secondsLeftCategory = Math.floor(secondsLeft / 10);
+        if (secondsLeftCategory) {
+            const bonus = speedRunBonuses[secondsLeftCategory];
+            userScore += bonus;
+        }
     }
     gameArea.innerHTML = `<h1>GAME OVER. ${gameOverMessage} Final score: ${userScore} points</h1><h2>with seed ${seed}</h2>`;
     const restartButton = document.createElement('button');
@@ -96,5 +102,8 @@ let currentRound = 0;
 const timer = new easytimer.Timer();
 const timeInMinutes = 1;
 const numRounds = 5;
+const speedRunBonuses = {
+    0: 0, 1: 10, 2: 20, 3: 40, 4: 60, 5: 100
+}
 
 timeDisplay.innerText = `${timeInMinutes}:00`;
