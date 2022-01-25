@@ -4,5 +4,5 @@ This project will implement some of the functionality from my existing ScrabbleJ
 
 ## Future tasks
 
-- [ ] Add score breakdown to end screen
+- [x] Add score breakdown to end screen
 - [ ] Add ability to trade letters in

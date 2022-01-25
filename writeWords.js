@@ -1,5 +1,3 @@
-const bingoBonus = 25;
-
 function hasLetters(attemptedWord, availableLetters) {
     // Takes two arrays, attemptedWord and availableLetters,
     // and checks that the attemptedWord can be written with 
@@ -45,10 +43,13 @@ function handleSuccessfulWord(wordAttempt) {
     const successfulWordArr = wordAttempt.split('').map(chr => getLetterObj(chr));
     let points = successfulWordArr.map(lett => lett.pointsVal).reduce((a, b) => a + b);
     // Bingo Rule, i.e. Player gets a flat bonus if they use all tiles at once
-    if (successfulWordArr.length === 5) points += bingoBonus;
-    userScore += points;
-    scoreDisplay.innerText = userScore;
-    console.log(`Total score: ${userScore}. Points for this word: ${points}`);
+    if (successfulWordArr.length === 7) {
+        userScore.total += bingoBonus;
+        userScore.bonuses.bingo += bingoBonus;
+    }
+    userScore.total += points;
+    scoreDisplay.innerText = userScore.total;
+    console.log(`Total score: ${userScore.total}. Points for this word: ${points}`);
     tileRack.replenish(successfulWordArr);
     currentRound += 1;
     // Keeps track of all written words
@@ -75,8 +76,9 @@ function handleWordSubmission(evt, wordForm) {
             handleSuccessfulWord(wordAttempt);
         } else {
             console.log("not a real word");
-            userScore -= 5;
-            scoreDisplay.innerText = userScore;
+            userScore.total -= 5;
+            userScore.penalties -= 5;
+            scoreDisplay.innerText = userScore.total;
             gameMessages.innerText = "That is not a valid word!";
             changeMessageColor('red');
         }

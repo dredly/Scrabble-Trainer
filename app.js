@@ -62,16 +62,33 @@ function handleGameEnd(outOfTime = false) {
         const secondsLeftCategory = Math.floor(secondsLeft / 10);
         if (secondsLeftCategory) {
             const bonus = speedRunBonuses[secondsLeftCategory];
-            userScore += bonus;
+            userScore.total += bonus;
+            userScore.bonuses.time += bonus;
         }
     }
-    gameArea.innerHTML = `<h1>GAME OVER. ${gameOverMessage} Final score: ${userScore} points</h1><h2>with seed ${seed}</h2>`;
+    gameArea.innerHTML = `<h1>GAME OVER. ${gameOverMessage} Final score: ${userScore.total} points</h1><h2>with seed ${seed}</h2>`;
     const scoreTable = document.createElement('table');
+    scoreTable.id = 'score-table';
     for (let word of wordsWritten) {
         const tableRow = document.createElement('tr');
         tableRow.innerHTML = `<td>word <span class="bold">${word.word}</span></td><td>${word.points} points</td>`;
         scoreTable.append(tableRow);
     }
+    const speedRunRow = document.createElement('tr');
+    speedRunRow.classList.add('border-above');
+    speedRunRow.innerHTML = `<td>"Speedrun" bonus</td><td>${userScore.bonuses.time} points</td>`;
+    scoreTable.append(speedRunRow);
+    const bingoRow = document.createElement('tr');
+    bingoRow.innerHTML = `<td>Bingo bonus</td><td>${userScore.bonuses.bingo} points</td>`;
+    scoreTable.append(bingoRow);
+    const penaltyRow = document.createElement('tr');
+    penaltyRow.classList.add('border-above');
+    penaltyRow.innerHTML = `<td>Penalties</td><td>${userScore.penalties} points</td>`;
+    scoreTable.append(penaltyRow);
+    const totalRow = document.createElement('tr');
+    totalRow.classList.add('border-above');
+    totalRow.innerHTML = `<td><span class="bold">Total</span></td><td>${userScore.total} points</td>`;
+    scoreTable.append(totalRow);
     gameArea.append(scoreTable);
     const restartButton = document.createElement('button');
     restartButton.innerText = 'Play Again';
@@ -102,17 +119,22 @@ const roundDisplay = document.querySelector('#roundDisplay');
 const scoreDisplay = document.querySelector('#scoreDisplay');
 const seedDisplay = document.querySelector('#seedDisplay');
 
+const timer = new easytimer.Timer();
 let seed = Math.random();
-let userScore = 0;
+const userScore = {
+    total: 0, penalties: 0, bonuses: {
+        time: 0, bingo: 0
+    }
+};
 let currentRound = 0;
 const wordsWritten = [];
 
 // Game configuration
-const timer = new easytimer.Timer();
 const timeInMinutes = 1;
 const numRounds = 5;
 const speedRunBonuses = {
     0: 0, 1: 10, 2: 20, 3: 40, 4: 60, 5: 100
 }
+const bingoBonus = 50;
 
 timeDisplay.innerText = `${timeInMinutes}:00`;

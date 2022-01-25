@@ -99,3 +99,16 @@ body * {
 #word-form {
     font-size: 1.2rem;
 }
+
+#score-table {
+    margin-bottom: 0.8rem;
+    border-collapse: collapse;
+}
+
+#score-table td {
+    padding-inline: 1rem;
+}
+
+.border-above > * {
+    border-top: 1px solid rgb(0, 0, 0);
+}
