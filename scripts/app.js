@@ -98,11 +98,6 @@ function handleGameEnd(outOfTime = false) {
     restartButton.addEventListener('click', () => window.location.reload());
 }
 
-const gameArea = document.querySelector('#game-area');
-const seedForm = document.querySelector("#seed-form");
-const randomSeedCheck = document.querySelector("#use-seed");
-const seedSelection = document.querySelector("#seed-selection");
-
 // Enables the manual seed input if the user choose to do so
 randomSeedCheck.addEventListener("click", () => {
     seedSelection.toggleAttribute("disabled");
@@ -113,28 +108,3 @@ randomSeedCheck.addEventListener("click", () => {
 seedForm.addEventListener("submit", e => handleStart(e));
 const gameMessages = document.querySelector('#game-messages');
 
-// Initialise game info
-const timeDisplay = document.querySelector('#timer');
-const roundDisplay = document.querySelector('#roundDisplay');
-const scoreDisplay = document.querySelector('#scoreDisplay');
-const seedDisplay = document.querySelector('#seedDisplay');
-
-const timer = new easytimer.Timer();
-let seed = Math.random();
-const userScore = {
-    total: 0, penalties: 0, bonuses: {
-        time: 0, bingo: 0
-    }
-};
-let currentRound = 0;
-const wordsWritten = [];
-
-// Game configuration
-const timeInMinutes = 1;
-const numRounds = 5;
-const speedRunBonuses = {
-    0: 0, 1: 10, 2: 20, 3: 40, 4: 60, 5: 100
-}
-const bingoBonus = 50;
-
-timeDisplay.innerText = `${timeInMinutes}:00`;
