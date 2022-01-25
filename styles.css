@@ -78,7 +78,7 @@ body * {
     padding-top: 0.3em;
 }
 
-.game-form {
+#form-wrapper {
     margin-top: 0.3rem;
 }
 
@@ -94,6 +94,10 @@ body * {
 
 .disabled {
     color:rgb(177, 177, 177);
+}
+
+#form-wrapper {
+    display: flex;
 }
 
 #word-form {

@@ -29,12 +29,16 @@ const tileRack = {
     replenish: function (usedLetters) {
         // Takes an array of letter objects that have been used, and replaces them
         // with new letters from the bag
-        for (lett of usedLetters) {
+        console.log(usedLetters);
+        for (let lett of usedLetters) {
             const current_ind = this.letters.indexOf(lett);
             this.remove(current_ind);
         }
         this.fill(usedLetters.length);
         this.reRender();
+    },
+    tradeAll: function () {
+        this.replenish([...this.letters]);
     }
 };
 

@@ -35,6 +35,8 @@ function handleStart(evt) {
     shuffle(letterBag, seed);
     seedForm.remove();
     createWordForm();
+    const formWrapper = document.querySelector('#form-wrapper');
+    formWrapper.appendChild(tradeButton);
     currentRound += 1;
     roundDisplay.innerText = currentRound;
     const wordForm = document.querySelector("#word-form");

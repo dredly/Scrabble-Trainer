@@ -7,6 +7,13 @@ const roundDisplay = document.querySelector('#roundDisplay');
 const scoreDisplay = document.querySelector('#scoreDisplay');
 const seedDisplay = document.querySelector('#seedDisplay');
 
+const tradeButton = document.createElement('button');
+tradeButton.innerText = 'Trade letters';
+tradeButton.classList.add('button');
+tradeButton.addEventListener('click', () => {
+    tileRack.tradeAll();
+})
+
 const timer = new easytimer.Timer();
 let seed = Math.random();
 const userScore = {

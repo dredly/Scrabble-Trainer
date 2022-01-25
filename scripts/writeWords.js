@@ -19,12 +19,15 @@ function getLetterObj(character) {
 }
 
 function createWordForm() {
+    const formWrapper = document.createElement('div');
+    formWrapper.id = 'form-wrapper';
     const wordInputForm = document.createElement('form');
     wordInputForm.classList.add('game-form');
     wordInputForm.autocomplete = 'off';
     wordInputForm.id = "word-form";
     wordInputForm.innerHTML = '<label for="word">Enter a word</label><input type="text" name="word" id="word" autofocus><button type="submit" class="button">Write</button>';
-    document.querySelector("#game-area").appendChild(wordInputForm);
+    formWrapper.appendChild(wordInputForm);
+    document.querySelector("#game-area").appendChild(formWrapper);
 }
 
 function changeMessageColor(changeTo) {
