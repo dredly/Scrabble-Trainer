@@ -39,6 +39,9 @@ const tileRack = {
     },
     tradeAll: function () {
         this.replenish([...this.letters]);
+        userScore.total -= 50;
+        userScore.penalties -= 50;
+        scoreDisplay.innerText = userScore.total;
     }
 };
 

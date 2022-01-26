@@ -6,5 +6,5 @@ This project will implement some of the functionality from my existing ScrabbleJ
 
 - [x] Add score breakdown to end screen
 - [x] Add ability to trade letters in
-- [ ] Add score penalty for trading in
+- [x] Add score penalty for trading in
 - [ ] Explain new rules on the start page
